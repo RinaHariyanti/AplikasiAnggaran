@@ -1,0 +1,11 @@
+{
+    "name": "Saldo",
+    "alias": "saldo",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Saldo\\app\\Providers\\SaldoServiceProvider"
+    ],
+    "files": []
+}

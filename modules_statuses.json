@@ -1,0 +1,12 @@
+{
+    "Dashboard": true,
+    "MenuManagement": true,
+    "PermissionManagement": true,
+    "UserManagement": true,
+    "Setting": true,
+    "Invoice": true,
+    "Expense": true,
+    "Pengeluaran": true,
+    "Saldo": true,
+    "Rt": true
+}

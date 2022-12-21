@@ -1,0 +1,11 @@
+{
+    "name": "Rt",
+    "alias": "rt",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Rt\\app\\Providers\\RtServiceProvider"
+    ],
+    "files": []
+}
