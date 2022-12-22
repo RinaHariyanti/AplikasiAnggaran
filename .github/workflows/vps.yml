@@ -2,7 +2,7 @@ name: Deploy ke VPS
 
 on:
   push:
-    branches: ["aws"]
+    branches: ["master"]
 
 jobs:
   build:
@@ -19,8 +19,8 @@ jobs:
           PORT: ${{ secrets.PORT }}
           PASSWORD: ${{ secrets.PASSWORD }}
           script: |
-            cd /home/kel5/tb_temp
-            git pull origin aws
+            cd /home/kelompok4/AplikasiAnggaran
+            git pull origin master
 
       - name: Remove semua container dan images yang sudah ada
         uses: appleboy/ssh-action@master
@@ -42,6 +42,6 @@ jobs:
           PORT: ${{ secrets.PORT }}
           PASSWORD: ${{ secrets.PASSWORD }}
           script: |
-            cd /home/kel5/tb_temp
-            docker build -t tokobangunan .
-            docker run -d -it -p 8081:80 tokobangunan
+            cd /home/kelompok4/AplikasiAnggaran
+            docker build -t anggaran .
+            docker run -d -it -p 8085:80 anggaran
