@@ -66,5 +66,5 @@ RUN mkdir -p storage/framework/cache storage/framework/sessions storage/framewor
 
 #7. chmod the storage directory
 RUN chmod -R 775 /var/www/html/
-RUN chmod 777 -R /var/www/html/public/img/
-RUN chown -R www-data:www-data /var/www/html/public/img/
+RUN chmod 777 -R /var/www/html/public/assets/images/
+RUN chown -R www-data:www-data /var/www/html/public/assets/images/
