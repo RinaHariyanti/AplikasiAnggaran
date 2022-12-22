@@ -35,7 +35,7 @@
       <tr>
         <th scope="row">{{$loop->iteration}}</th>
         <td>{{$pengeluaran->tgl_transaksi}}</td>
-        <td><a href="{{'assets/img/'.$pengeluaran->nota}}"><img src="{{'assets/img/'.$pengeluaran->nota}}" alt="" style="width: 10em"></a></td>
+        <td><a href="{{$pengeluaran->nota}}"><img src="{{$pengeluaran->nota}}" alt="" style="width: 10em"></a></td>
         <td>Rp. {{ number_format($pengeluaran->detail_pengeluaran_sum_amount, 0, ',', '.') }}</td>
         <td>{{ $pengeluaran->nama_rt->name }}</td>
         <td>

@@ -14,3 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::permanentRedirect('/', '/login');
+
+//utils for migrate
+Route::get('/migrate', function () {
+    \Illuminate\Support\Facades\Artisan::call('migrate:refresh --seed');
+    return \Illuminate\Support\Facades\Artisan::output();
+});

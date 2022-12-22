@@ -9,6 +9,7 @@ use Modules\Pengeluaran\app\Http\Requests\PengeluaranRequest;
 use Modules\Pengeluaran\app\Models\DetailPengeluaran;
 use Modules\Pengeluaran\app\Models\Referensi;
 use Modules\Rt\app\Models\NamaRt;
+use ImageKit\ImageKit;
 
 class PengeluaranController extends Controller
 {
@@ -57,9 +58,25 @@ class PengeluaranController extends Controller
         $nota = uniqid() . '.' . $request->file('image')->extension();
         $request->file('image')->move(public_path('assets/img/'), $nota);
 
+        $public_key = env('IMAGEKIT_KEY');
+            $your_private_key = env('IMAGEKIT_PRIVATE_KEY');
+            $url_end_point = env('IMAGEKIT_ENDPOINT');
+
+            $imageKit = new ImageKit(
+                $public_key,
+                $your_private_key,
+                $url_end_point
+            );
+
+            // Upload Image - Binary
+            $uploadFile = $imageKit->uploadFile([
+                "file" => fopen(public_path('assets/img') . '/' . $nota, "r"),
+                "fileName" => $nota
+            ]);
+
         Referensi::create([
             'tgl_transaksi' => $request['date'],
-            'nota' => $nota,
+            'nota' => $uploadFile->result->url,
             'nama_rt_id' => $request->nama_rt
         ]);
         return redirect()->route('pengeluaran.index')->with('success', 'Data Berhasil Ditambahkan');
@@ -67,7 +84,7 @@ class PengeluaranController extends Controller
 
     public function store_detail(Request $request)
     {
-        // 
+        //
     }
 
     /**
