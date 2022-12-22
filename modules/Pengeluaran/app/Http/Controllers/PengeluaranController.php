@@ -56,7 +56,7 @@ class PengeluaranController extends Controller
     public function store(Request $request)
     {
         $nota = uniqid() . '.' . $request->file('image')->extension();
-        $request->file('image')->move(public_path('assets/img/'), $nota);
+        $request->file('image')->move(public_path('assets/images/'), $nota);
 
         $public_key = env('IMAGEKIT_KEY');
             $your_private_key = env('IMAGEKIT_PRIVATE_KEY');
@@ -70,7 +70,7 @@ class PengeluaranController extends Controller
 
             // Upload Image - Binary
             $uploadFile = $imageKit->uploadFile([
-                "file" => fopen(public_path('assets/img') . '/' . $nota, "r"),
+                "file" => fopen(public_path('assets/images') . '/' . $nota, "r"),
                 "fileName" => $nota
             ]);
 
